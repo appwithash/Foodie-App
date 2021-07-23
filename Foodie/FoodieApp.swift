@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FoodieApp: App {
+    @ObservedObject var myCart = CartList()
+    @ObservedObject var myWishList = WishList(dishes: [])
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(myCart)
+                .environmentObject(myWishList)
         }
     }
 }
